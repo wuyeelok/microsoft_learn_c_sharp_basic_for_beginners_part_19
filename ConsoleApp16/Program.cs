@@ -15,11 +15,7 @@ Console.WriteLine(people.Count());
 
 foreach (var person in people)
 {
-    Console.WriteLine($"{person.FirstName} {person.LastName} was born on {person.BirthDate}, has {person.Pets.Count()} pets");
-    foreach (var pet in person.Pets)
-    {
-        Console.WriteLine($"{pet.Name} makes noise {pet.MakeNoise()}");
-    }
+    Console.WriteLine(person);
 }
 
 
@@ -31,6 +27,17 @@ public class Person(string firstName, string lastName, DateOnly birthDate)
 
 
     public List<Pet> Pets { get; } = [];
+
+    public override string ToString()
+    {
+        string petsInfo = "";
+        foreach (var pet in Pets)
+        {
+            petsInfo += $"{pet.Name} makes noise {pet.MakeNoise()}. ";
+        }
+
+        return $"{FirstName} {LastName} was born on {BirthDate}, has number of {Pets.Count()} pets.\n{petsInfo}";
+    }
 }
 
 public abstract class Pet(string name)
