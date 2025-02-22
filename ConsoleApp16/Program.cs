@@ -1,24 +1,41 @@
-﻿// See https://aka.ms/new-console-template for more information
-var p = 16;
-Console.WriteLine($"Hello, World! Part {p}");
+﻿Console.WriteLine("Hello World! OOP");
 
-// Specify the data source.
-List<int> scores = new List<int> { 180, 2, 97, 92, 81, 60, 300 };
+var p1 = new Person("John", "Doe", new DateOnly(1990, 1, 1));
 
+var p2 = new Person("Ken", "Wu", new DateOnly(1989, 1, 1));
 
-// Define the query expression.
-IEnumerable<string> scoreQuery =
-    from score in scores
-    where score > 80 && score % 2 == 0
-    orderby score descending
-    select $"{score} ";
+List<Person> people = [p1, p2];
+Console.WriteLine(people.Count());
 
-// Execute the query.
-foreach (var s in scoreQuery)
+foreach (var person in people)
 {
-    Console.Write(s);
+    Console.WriteLine($"{person.FirstName} {person.LastName} was born on {person.BirthDate}");
 }
-// Output: 300, 180, 92
-Console.WriteLine();
-Console.WriteLine($"Number of scores: {scoreQuery.Count()}");
-// Output: 3
+
+
+public class Person(string firstName, string lastName, DateOnly birthDate)
+{
+    public string FirstName { get; } = firstName;
+    public string LastName { get; } = lastName;
+    public DateOnly BirthDate { get; } = birthDate;
+
+
+}
+
+public class Mouse(string name)
+{
+    public string Name { get; } = name;
+
+    public string Maze() => "I am in the maze";
+
+}
+
+public class Tiger(string name)
+{
+    public string Name { get; } = name;
+
+    public string Hunt()
+    {
+        return "I am hunting";
+    }
+}
