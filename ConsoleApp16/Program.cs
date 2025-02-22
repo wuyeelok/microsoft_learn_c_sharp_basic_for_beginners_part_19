@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Contracts;
-
-Console.WriteLine("Hello World! OOP");
+﻿Console.WriteLine("Hello World! OOP");
 
 var p1 = new Person("John", "Doe", new DateOnly(1990, 1, 1));
 p1.Pets.Add(new Tiger("Tiger1"));
